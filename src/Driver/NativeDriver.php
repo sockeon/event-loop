@@ -241,11 +241,15 @@ final class NativeDriver implements DriverInterface
         $except = null;
 
         foreach ($this->readable as $watcher) {
-            $read[] = $watcher['stream'];
+            if (is_resource($watcher['stream'])) {
+                $read[] = $watcher['stream'];
+            }
         }
 
         foreach ($this->writable as $watcher) {
-            $write[] = $watcher['stream'];
+            if (is_resource($watcher['stream'])) {
+                $write[] = $watcher['stream'];
+            }
         }
 
         // Use stream_select if we have streams

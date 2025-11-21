@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Sockeon\EventLoop\Loop;
 
 use RuntimeException;
+use Sockeon\EventLoop\Driver\DriverInterface;
+use Sockeon\EventLoop\Driver\NativeDriver;
 
 /**
  * Singleton event loop instance.
@@ -17,11 +19,27 @@ final class Loop implements LoopInterface
 {
     private static ?self $instance = null;
 
+    private ?DriverInterface $driver = null;
+
     /**
      * Private constructor to prevent direct instantiation.
      */
     private function __construct()
     {
+    }
+
+    /**
+     * Get the event loop driver.
+     *
+     * @return DriverInterface The driver instance
+     */
+    private function getDriver(): DriverInterface
+    {
+        if ($this->driver === null) {
+            $this->driver = new NativeDriver();
+        }
+
+        return $this->driver;
     }
 
     /**
@@ -60,8 +78,7 @@ final class Loop implements LoopInterface
      */
     public function run(): void
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        $this->getDriver()->run();
     }
 
     /**
@@ -71,8 +88,7 @@ final class Loop implements LoopInterface
      */
     public function stop(): void
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        $this->getDriver()->stop();
     }
 
     /**
@@ -83,8 +99,7 @@ final class Loop implements LoopInterface
      */
     public function defer(callable $callback): string
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        return $this->getDriver()->defer($callback);
     }
 
     /**
@@ -96,8 +111,7 @@ final class Loop implements LoopInterface
      */
     public function delay(float $delay, callable $callback): string
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        return $this->getDriver()->delay($delay, $callback);
     }
 
     /**
@@ -109,8 +123,7 @@ final class Loop implements LoopInterface
      */
     public function repeat(float $interval, callable $callback): string
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        return $this->getDriver()->repeat($interval, $callback);
     }
 
     /**
@@ -122,8 +135,7 @@ final class Loop implements LoopInterface
      */
     public function onReadable($stream, callable $callback): string
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        return $this->getDriver()->onReadable($stream, $callback);
     }
 
     /**
@@ -135,8 +147,7 @@ final class Loop implements LoopInterface
      */
     public function onWritable($stream, callable $callback): string
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        return $this->getDriver()->onWritable($stream, $callback);
     }
 
     /**
@@ -146,7 +157,6 @@ final class Loop implements LoopInterface
      */
     public function cancel(string $watcherId): void
     {
-        // TODO: Implement with driver
-        throw new RuntimeException('Event loop driver not yet implemented');
+        $this->getDriver()->cancel($watcherId);
     }
 }

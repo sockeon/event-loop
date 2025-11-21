@@ -31,15 +31,15 @@ A high-performance, extensible event loop implementation for PHP with support fo
 - [x] `Loop` - Singleton event loop instance
 - [x] `DriverInterface` - Driver abstraction
 - [x] `NativeDriver` - Native PHP stream_select driver
-- [ ] Basic event loop operations:
-  - [ ] `run()` - Start the event loop
-  - [ ] `stop()` - Stop the event loop
-  - [ ] `defer()` - Schedule callback for next tick
-  - [ ] `delay()` - Schedule callback after delay
-  - [ ] `repeat()` - Schedule repeating callback
-  - [ ] `onReadable()` - Watch for readable events
-  - [ ] `onWritable()` - Watch for writable events
-  - [ ] `cancel()` - Cancel a watcher
+- [x] Basic event loop operations:
+  - [x] `run()` - Start the event loop
+  - [x] `stop()` - Stop the event loop
+  - [x] `defer()` - Schedule callback for next tick
+  - [x] `delay()` - Schedule callback after delay
+  - [x] `repeat()` - Schedule repeating callback
+  - [x] `onReadable()` - Watch for readable events
+  - [x] `onWritable()` - Watch for writable events
+  - [x] `cancel()` - Cancel a watcher
 
 ### Phase 2: Promises ✅
 
