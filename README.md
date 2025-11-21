@@ -45,7 +45,7 @@ A high-performance, extensible event loop implementation for PHP with support fo
 
 - [x] `PromiseInterface` - Promise/A+ compliant interface
 - [x] `Promise` - Promise implementation
-- [ ] `Deferred` - Deferred promise resolver
+- [x] `Deferred` - Deferred promise resolver
 - [x] Promise methods:
   - [x] `then()` - Chain promises
   - [x] `catch()` - Handle errors
