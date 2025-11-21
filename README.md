@@ -30,7 +30,7 @@ A high-performance, extensible event loop implementation for PHP with support fo
 - [x] `LoopInterface` - Main event loop interface
 - [x] `Loop` - Singleton event loop instance
 - [x] `DriverInterface` - Driver abstraction
-- [ ] `NativeDriver` - Native PHP stream_select driver
+- [x] `NativeDriver` - Native PHP stream_select driver
 - [ ] Basic event loop operations:
   - [ ] `run()` - Start the event loop
   - [ ] `stop()` - Stop the event loop
