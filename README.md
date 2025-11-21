@@ -44,17 +44,17 @@ A high-performance, extensible event loop implementation for PHP with support fo
 ### Phase 2: Promises ✅
 
 - [x] `PromiseInterface` - Promise/A+ compliant interface
-- [ ] `Promise` - Promise implementation
+- [x] `Promise` - Promise implementation
 - [ ] `Deferred` - Deferred promise resolver
-- [ ] Promise methods:
-  - [ ] `then()` - Chain promises
-  - [ ] `catch()` - Handle errors
-  - [ ] `finally()` - Always execute
+- [x] Promise methods:
+  - [x] `then()` - Chain promises
+  - [x] `catch()` - Handle errors
+  - [x] `finally()` - Always execute
   - [ ] `Promise::all()` - Wait for all promises
   - [ ] `Promise::any()` - Wait for any promise
   - [ ] `Promise::race()` - Race promises
-  - [ ] `Promise::resolve()` - Create resolved promise
-  - [ ] `Promise::reject()` - Create rejected promise
+  - [x] `Promise::resolve()` - Create resolved promise
+  - [x] `Promise::reject()` - Create rejected promise
 
 ### Phase 3: Coroutines ✅
 
