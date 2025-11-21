@@ -3,18 +3,27 @@ name: Tests
 on:
   pull_request:
     branches: [ '*' ]
+  push:
+    branches: [ 'main' ]
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - '8.1'
+          - '8.2'
+          - '8.3'
+          - '8.4'
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Setup PHP
+    - name: Setup PHP ${{ matrix.php-version }}
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.4'
+        php-version: ${{ matrix.php-version }}
         extensions: mbstring, intl
         coverage: xdebug
 
@@ -26,16 +35,20 @@ jobs:
       uses: actions/cache@v3
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
+          ${{ runner.os }}-php-${{ matrix.php-version }}-
           ${{ runner.os }}-php-
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
+    - name: Check code style with PHP CS Fixer
+      run: composer cs-check
+
     - name: Run PHPStan
-      run: vendor/bin/phpstan analyse
+      run: composer phpstan
 
     - name: Run Pest tests
-      run: vendor/bin/pest
+      run: composer test
 

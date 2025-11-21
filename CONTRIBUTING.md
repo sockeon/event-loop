@@ -78,6 +78,7 @@ composer test
 
 ### Code Quality
 
+- All code must pass PHP CS Fixer checks (PSR-12 standard)
 - All code must pass PHPStan level 10 analysis
 - All tests must pass
 - Code should be maintainable and well-structured
@@ -85,8 +86,14 @@ composer test
 ### Running Code Quality Checks
 
 ```bash
+# Run PHP CS Fixer to check code style
+composer cs-check
+
+# Run PHP CS Fixer to fix code style issues
+composer cs-fix
+
 # Run PHPStan
-vendor/bin/phpstan analyse
+composer phpstan
 
 # Run tests
 composer test

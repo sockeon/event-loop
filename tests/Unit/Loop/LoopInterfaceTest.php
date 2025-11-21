@@ -48,4 +48,3 @@ test('LoopInterface exists and has required methods', function () {
     expect($cancelMethod->getReturnType()?->getName())->toBe('void');
     expect($cancelMethod->getParameters())->toHaveCount(1);
 });
-
