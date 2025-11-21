@@ -86,7 +86,7 @@ test('NativeDriver can watch readable streams', function () {
 
     // Use a pipe to ensure the stream is actually readable
     [$readStream, $writeStream] = stream_socket_pair(STREAM_PF_UNIX, STREAM_SOCK_STREAM, 0);
-    
+
     // Write data to make it readable
     fwrite($writeStream, 'test');
     fclose($writeStream);
@@ -147,32 +147,32 @@ test('NativeDriver can cancel watchers', function () {
 test('NativeDriver throws exception for negative delay', function () {
     $driver = new NativeDriver();
 
-    expect(fn() => $driver->delay(-1.0, fn() => null))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $driver->delay(-1.0, fn () => null))->toThrow(InvalidArgumentException::class);
 });
 
 test('NativeDriver throws exception for negative interval', function () {
     $driver = new NativeDriver();
 
-    expect(fn() => $driver->repeat(-1.0, fn() => null))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $driver->repeat(-1.0, fn () => null))->toThrow(InvalidArgumentException::class);
 });
 
 test('NativeDriver throws exception for invalid stream in onReadable', function () {
     $driver = new NativeDriver();
 
-    expect(fn() => $driver->onReadable('not a stream', fn() => null))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $driver->onReadable('not a stream', fn () => null))->toThrow(InvalidArgumentException::class);
 });
 
 test('NativeDriver throws exception for invalid stream in onWritable', function () {
     $driver = new NativeDriver();
 
-    expect(fn() => $driver->onWritable('not a stream', fn() => null))->toThrow(InvalidArgumentException::class);
+    expect(fn () => $driver->onWritable('not a stream', fn () => null))->toThrow(InvalidArgumentException::class);
 });
 
 test('NativeDriver throws exception when run is called while already running', function () {
     $driver = new NativeDriver();
 
     $driver->defer(function () use ($driver) {
-        expect(fn() => $driver->run())->toThrow(RuntimeException::class, 'Event loop is already running');
+        expect(fn () => $driver->run())->toThrow(RuntimeException::class, 'Event loop is already running');
         $driver->stop();
     });
 
@@ -192,4 +192,3 @@ test('NativeDriver can stop the event loop', function () {
 
     expect($executed)->toBeTrue();
 });
-

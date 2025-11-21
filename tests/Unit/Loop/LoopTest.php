@@ -22,14 +22,14 @@ test('Loop implements LoopInterface', function () {
 test('Loop cannot be cloned', function () {
     $loop = Loop::getInstance();
 
-    expect(fn() => clone $loop)->toThrow(Error::class);
+    expect(fn () => clone $loop)->toThrow(Error::class);
 });
 
 test('Loop cannot be unserialized', function () {
     $loop = Loop::getInstance();
     $serialized = serialize($loop);
 
-    expect(fn() => unserialize($serialized))->toThrow(RuntimeException::class);
+    expect(fn () => unserialize($serialized))->toThrow(RuntimeException::class);
 });
 
 test('Loop has all required methods from LoopInterface', function () {
@@ -50,17 +50,18 @@ test('Loop has all required methods from LoopInterface', function () {
 test('Loop methods throw RuntimeException when driver not implemented', function () {
     $loop = Loop::getInstance();
 
-    expect(fn() => $loop->run())->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-    expect(fn() => $loop->stop())->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-    expect(fn() => $loop->defer(fn() => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-    expect(fn() => $loop->delay(1.0, fn() => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-    expect(fn() => $loop->repeat(1.0, fn() => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-    expect(fn() => $loop->cancel('test'))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->run())->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->stop())->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->defer(fn () => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->delay(1.0, fn () => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->repeat(1.0, fn () => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+    expect(fn () => $loop->cancel('test'))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
 
     $stream = fopen('php://memory', 'r+');
+
     try {
-        expect(fn() => $loop->onReadable($stream, fn() => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
-        expect(fn() => $loop->onWritable($stream, fn() => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+        expect(fn () => $loop->onReadable($stream, fn () => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
+        expect(fn () => $loop->onWritable($stream, fn () => null))->toThrow(RuntimeException::class, 'Event loop driver not yet implemented');
     } finally {
         fclose($stream);
     }
@@ -72,4 +73,3 @@ test('Loop getInstance is static and returns LoopInterface', function () {
     expect($loop)->toBeInstanceOf(Loop::class);
     expect($loop)->toBeInstanceOf(LoopInterface::class);
 });
-

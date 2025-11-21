@@ -77,4 +77,3 @@ interface LoopInterface
      */
     public function cancel(string $watcherId): void;
 }
-

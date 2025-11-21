@@ -51,7 +51,7 @@ final class NativeDriver implements DriverInterface
         $this->running = true;
         $this->stopRequested = false;
 
-        while ($this->running && !$this->stopRequested) {
+        while ($this->running && ! $this->stopRequested) {
             $this->tick();
         }
 
@@ -136,7 +136,7 @@ final class NativeDriver implements DriverInterface
      */
     public function onReadable($stream, callable $callback): string
     {
-        if (!is_resource($stream)) {
+        if (! is_resource($stream)) {
             throw new InvalidArgumentException('Stream must be a resource');
         }
 
@@ -158,7 +158,7 @@ final class NativeDriver implements DriverInterface
      */
     public function onWritable($stream, callable $callback): string
     {
-        if (!is_resource($stream)) {
+        if (! is_resource($stream)) {
             throw new InvalidArgumentException('Stream must be a resource');
         }
 
@@ -210,6 +210,7 @@ final class NativeDriver implements DriverInterface
         foreach ($this->timers as $id => $timer) {
             if ($now >= $timer['time']) {
                 unset($this->timers[$id]);
+
                 try {
                     $timer['callback']();
                 } catch (Throwable $e) {
@@ -222,6 +223,7 @@ final class NativeDriver implements DriverInterface
         foreach ($this->repeats as $id => $repeat) {
             if ($now >= $repeat['time']) {
                 $this->repeats[$id]['time'] = $now + $repeat['interval'];
+
                 try {
                     $repeat['callback']();
                 } catch (Throwable $e) {
@@ -248,14 +250,14 @@ final class NativeDriver implements DriverInterface
 
         // Use stream_select if we have streams
         // stream_select requires at least one non-empty array in PHP 8.1+
-        if (!empty($read) || !empty($write)) {
+        if (! empty($read) || ! empty($write)) {
             // Pass arrays by reference - use empty arrays if needed
             $readRef = $read;
             $writeRef = $write;
             $exceptRef = [];
-            
+
             $result = @stream_select($readRef, $writeRef, $exceptRef, (int) $timeout, (int) (($timeout - (int) $timeout) * 1000000));
-            
+
             // Update arrays from references
             $read = $readRef;
             $write = $writeRef;

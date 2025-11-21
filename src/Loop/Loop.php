@@ -150,4 +150,3 @@ final class Loop implements LoopInterface
         throw new RuntimeException('Event loop driver not yet implemented');
     }
 }
-
