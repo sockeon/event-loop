@@ -38,4 +38,3 @@ test('PromiseInterface exists and has required methods', function () {
     expect($finallyParams[0]->getName())->toBe('onFinally');
     expect($finallyParams[0]->isOptional())->toBeFalse();
 });
-

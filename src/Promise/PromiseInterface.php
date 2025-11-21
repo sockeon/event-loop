@@ -44,4 +44,3 @@ interface PromiseInterface
      */
     public function finally(callable $onFinally): PromiseInterface;
 }
-
