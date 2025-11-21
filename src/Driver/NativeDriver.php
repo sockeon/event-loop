@@ -55,6 +55,20 @@ final class NativeDriver implements DriverInterface
             $this->tick();
         }
 
+        // Process any remaining deferred callbacks before stopping
+        // This ensures all deferred callbacks are executed even if stop was called
+        while (! empty($this->deferred)) {
+            $deferred = $this->deferred;
+            $this->deferred = [];
+            foreach ($deferred as $callback) {
+                try {
+                    $callback();
+                } catch (Throwable $e) {
+                    error_log('Uncaught exception in deferred callback: ' . $e->getMessage());
+                }
+            }
+        }
+
         $this->running = false;
     }
 
