@@ -43,7 +43,7 @@ A high-performance, extensible event loop implementation for PHP with support fo
 
 ### Phase 2: Promises ✅
 
-- [ ] `PromiseInterface` - Promise/A+ compliant interface
+- [x] `PromiseInterface` - Promise/A+ compliant interface
 - [ ] `Promise` - Promise implementation
 - [ ] `Deferred` - Deferred promise resolver
 - [ ] Promise methods:
