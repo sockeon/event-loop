@@ -1,0 +1,51 @@
+{
+    "name": "sockeon/event-loop",
+    "description": "A high-performance, extensible event loop implementation for PHP with support for promises, coroutines, async I/O, and worker pools",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "async",
+        "asynchronous",
+        "event-loop",
+        "eventloop",
+        "promise",
+        "coroutine",
+        "non-blocking",
+        "io",
+        "socket",
+        "worker",
+        "concurrent",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "xentixar",
+            "email": "xentixar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8",
+        "phpstan/phpstan": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sockeon\\EventLoop\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sockeon\\EventLoop\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
+
