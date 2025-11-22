@@ -20,6 +20,10 @@ php examples/event-loop/basic.php
 php examples/promise/basic.php
 php examples/promise/utilities.php
 php examples/promise/deferred.php
+
+# Coroutine examples
+php examples/coroutine/basic.php
+php examples/coroutine/api-requests.php
 ```
 
 ## Event Loop Examples
@@ -56,6 +60,22 @@ Shows how to use `Deferred` for external promise resolution:
 - Async operation simulation
 - Error handling with deferred
 - Multiple handlers on deferred promises
+
+## Coroutine Examples
+
+### Basic (`coroutine/basic.php`)
+
+Introduction to coroutines:
+- Simple promise unwrapping
+- Coroutines with delays
+- Error handling in coroutines
+
+### API Requests (`coroutine/api-requests.php`)
+
+Real-world example: Sequential API calls:
+- Fetching user data, posts, and comments
+- Error handling and fallbacks
+- Conditional async operations
 
 ## Understanding Promise vs Deferred
 
