@@ -58,11 +58,11 @@ A high-performance, extensible event loop implementation for PHP with support fo
 
 ### Phase 3: Coroutines ✅
 
-- [ ] `Coroutine` - Coroutine wrapper
-- [ ] Generator-based coroutines
-- [ ] Automatic promise unwrapping
-- [ ] Exception handling in coroutines
-- [ ] Async/await-like syntax support
+- [x] `Coroutine` - Coroutine wrapper
+- [x] Generator-based coroutines
+- [x] Automatic promise unwrapping
+- [x] Exception handling in coroutines
+- [x] Async/await-like syntax support
 
 ### Phase 4: Async Sockets ✅
 
@@ -130,13 +130,13 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## Roadmap
 
 - [x] Package structure
-- [ ] Phase 1: Core Event Loop
-- [ ] Phase 2: Promises
-- [ ] Phase 3: Coroutines
+- [x] Phase 1: Core Event Loop
+- [x] Phase 2: Promises
+- [x] Phase 3: Coroutines
 - [ ] Phase 4: Async Sockets
 - [ ] Phase 5: Worker Pools
 - [ ] Phase 6: Streams
 - [ ] Phase 7: Advanced Drivers
-- [ ] Documentation
-- [ ] Tests
-- [ ] Examples
+- [x] Documentation
+- [x] Tests
+- [x] Examples
